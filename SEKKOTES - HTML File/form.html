@@ -1,0 +1,54 @@
+<?!= include('Stylesheet'); ?>
+
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+
+<script>
+  
+  function fileUploaded(status) {
+    var newHTML = '<div class="form-success">Your file has been uploaded!</div>';
+    document.getElementById('form-div').innerHTML = newHTML;
+    } 
+  
+</script>
+
+<!--Form Header text-->
+<div id="container"> 
+  <div>
+  <h1>SEKKOTES</h1>
+  <h2>Homework-Uploader</h2>
+  </div>
+  
+<!-- 
+Form entrees - Form div will be hidden after form submission. 
+You can edit or delete these values to gather the information you like. Create corresponding values on 'Code.gs' as indicated there.
+-->
+
+  <div id="form-div">
+  <form>
+
+	<label>Name(s)</label>
+    <input name="name" type="text"/>
+
+    <label>Email</label> 
+    <input name="email" type="text"/>
+  
+    <label>Assignment Name</label>    
+    <input name="assignmentName" type="text"/></td>
+     
+    <hr>
+    <p>Use the buttons below to upload your assignment. Files should be under 10 MB in size.</p>
+    <hr>
+  
+    <p>Upload Submission:</p>
+    <input class="upload" name="Assignment" rules="required" type="file" />
+    
+    <!--Don't edit below this line-->
+    
+    <input type="button" class="button" value="Submit"
+    onclick="this.value='Uploading...';
+      google.script.run
+        .withSuccessHandler(fileUploaded)
+        .processForm(this.parentNode)" />
+  </form>
+</div>
+</div>
